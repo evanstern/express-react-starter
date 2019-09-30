@@ -5,8 +5,10 @@ import { Item } from './models/item';
 
 const app: Application = express();
 
+const { PORT, MONGO_URI } = process.env;
+
 mongoose
-  .connect('mongodb://mongo:27017/starter', {
+  .connect(MONGO_URI!, {
     useNewUrlParser: true,
   })
   .then(() => console.log('MongoDB Connected'))
@@ -17,6 +19,6 @@ app.get('/', async (_req: Request, res: Response) => {
   res.send(item);
 });
 
-app.listen(8000, () => {
-  console.log('App is listening on port 8000!');
+app.listen(PORT, () => {
+  console.log(`App is listening on port ${PORT}`);
 });
