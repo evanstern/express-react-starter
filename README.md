@@ -10,3 +10,9 @@ A starter project that sets things up the way I like it.
 * Typescript support
 * Eslint
 * Prettier
+
+## How to use
+
+Copy the `.env.example` file and modify it as necessary
+
+Run `docker-compose up`
