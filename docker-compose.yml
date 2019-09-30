@@ -13,6 +13,17 @@ services:
     ports:
       - '8000:8000'
     command: 'npm run start:dev'
+  web:
+    build:
+      context: ./client
+    command: npm start
+    volumes:
+      - ./client/:/app
+      - /app/node_modules
+    depends_on:
+      - server
+    ports:
+      - '3000:3000'
   mongo:
     container_name: mongo
     image: mongo
