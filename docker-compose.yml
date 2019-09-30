@@ -1,0 +1,18 @@
+version: "3"
+services: 
+  server: 
+    build: .
+    working_dir: /app
+    volumes: 
+      - ./src/:/app/src
+      - ./node_modules:/app/node_modules
+    depends_on:
+      - mongo
+    ports:
+      - '8000:8000'
+    command: 'npm run start:dev'
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
