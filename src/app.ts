@@ -1,7 +1,8 @@
 import express, { Application, Request, Response } from 'express';
+import mongoose from 'mongoose';
 import path from 'path';
 
-import { Item } from './models/item';
+const Item = mongoose.model('Item');
 
 const app: Application = express();
 
