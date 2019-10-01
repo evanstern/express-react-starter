@@ -1,13 +1,17 @@
 import supertest from 'supertest';
+import mongoose from 'mongoose';
 
-import app from '../app';
 import { setupDb } from '../test-helpers';
-
-import { Item, IItemModel } from '../models/item';
-
-const request = supertest(app);
+import { IItemModel } from '../db/models/item';
 
 setupDb('endpoint-tests');
+
+// this has to happen before `app` is imported in order to register the models
+require('../db');
+import app from '../app';
+
+const request = supertest(app);
+const Item = mongoose.model<IItemModel>('Item');
 
 describe('items endpoint', () => {
   it('gets the items endpoint', async done => {
